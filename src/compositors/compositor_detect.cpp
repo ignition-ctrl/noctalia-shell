@@ -4,6 +4,7 @@
 
 #include <cstdlib>
 #include <string>
+#include <sys/stat.h>
 
 namespace compositors {
 
@@ -75,6 +76,9 @@ namespace compositors {
       if (StringUtils::containsInsensitive(hint, "kde") || StringUtils::containsInsensitive(hint, "plasma")) {
         return CompositorKind::Kde;
       }
+      if (StringUtils::containsInsensitive(hint, "driftwm")) {
+        return CompositorKind::Driftwm;
+      }
       return CompositorKind::Unknown;
     }
 
@@ -103,6 +107,8 @@ namespace compositors {
       return "Labwc";
     case CompositorKind::Kde:
       return "KDE";
+    case CompositorKind::Driftwm:
+      return "DriftWM"
     case CompositorKind::Unknown:
       return "Unknown";
     }
